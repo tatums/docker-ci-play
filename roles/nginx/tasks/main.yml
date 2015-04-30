@@ -1,0 +1,13 @@
+---
+# tasks for nginx
+
+- name: install nginx via yum
+  yum: name=nginx state=present
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: install nginx via apt
+  apt: name=nginx state=present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: ensure nginx is running (and enable it at boot)
+  service: name=nginx state=started enabled=yes

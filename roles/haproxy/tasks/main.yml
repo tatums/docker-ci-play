@@ -1,0 +1,13 @@
+---
+# tasks for haproxy
+
+- name: install haproxy via yum
+  yum: name=haproxy state=present
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: install haproxy via apt
+  apt: name=haproxy state=present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: ensure haproxy is running (and enable it at boot)
+  service: name=haproxy state=started enabled=yes
