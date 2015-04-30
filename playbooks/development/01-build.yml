@@ -1,0 +1,18 @@
+---
+- hosts: dev
+  remote_user: vagrant
+  gather_facts: false
+  vars_files:
+    - ./../vars.yml
+  tasks:
+  - name: Setup Project Folder
+    file: path={{project_root}} state=directory
+  - copy: src=./../files/default dest={{project_root}}default owner=vagrant group=vagrant mode=0644
+  - copy: src=./../files/index.html dest={{project_root}}index.html owner=vagrant group=vagrant mode=0644
+  - copy: src=./../files/Dockerfile dest={{project_root}}Dockerfile owner=vagrant group=vagrant mode=0644
+  - name: Docker - build image
+    shell: >
+      docker build -t nginx .
+    args:
+      chdir: ~/app
+

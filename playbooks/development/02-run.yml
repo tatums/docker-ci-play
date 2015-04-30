@@ -1,12 +1,12 @@
 ---
 - hosts: dev
   remote_user: vagrant
+  gather_facts: false
   vars_files:
     - ./../vars.yml
-  gather_facts: false
   tasks:
   - name: Docker - Run
     shell: >
-      docker-compose up -d
+      docker run -v {{project_root}}:/var/www:rw -p 80:80 -d nginx
     args:
       chdir: ~/app

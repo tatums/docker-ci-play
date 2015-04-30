@@ -16,21 +16,6 @@
     args:
       creates: /usr/bin/docker
 
-  - name: Installing docker-compose
-    sudo: yes
-    shell: >
-      curl -L https://github.com/docker/compose/releases/download/1.2.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-    args:
-      creates: /usr/local/bin/docker-compose
-
-  - name: Setting permissions
-    sudo: yes
-    file:
-      path: /usr/local/bin/docker-compose
-      group: root
-      owner: root
-      mode: 0755
-
   - user: name=vagrant groups=docker append=yes
     sudo: yes
 
