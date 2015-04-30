@@ -1,9 +1,0 @@
----
-- hosts: dev
-  remote_user: vagrant
-
-  tasks:
-    - name: Stuff
-      include: 00-init.yml
-    #- include: 01-build.yml
-    #- include: 02-run.yml
