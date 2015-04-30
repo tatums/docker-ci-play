@@ -1,6 +1,6 @@
 ---
-- hosts: dev
-  remote_user: vagrant
+- hosts: prod
+  remote_user: ec2-user
 
   tasks:
   - name: install htop
@@ -16,6 +16,6 @@
     args:
       creates: /usr/bin/docker
 
-  - user: name=vagrant groups=docker append=yes
+  - user: name=ec2-user groups=docker append=yes
     sudo: yes
 
