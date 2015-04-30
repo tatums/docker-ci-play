@@ -3,4 +3,5 @@ project_name: awesome_thing
 project_root: ~/app/
 project_repo: https://github.com/tatums/awesome_thing.git
 branch: master
-
+web_user: ec2-user
+web_group: ec2-user

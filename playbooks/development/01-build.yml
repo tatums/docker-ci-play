@@ -1,16 +1,17 @@
 ---
 - hosts: web
+  vars_files:
+    - ./../vars.yml
+  ## FIX ME - {{web_user}} no workie
   remote_user: ec2-user
 
   gather_facts: false
-  vars_files:
-    - ./../vars.yml
   tasks:
   - name: Setup Project Folder
     file: path={{project_root}} state=directory
-  - copy: src=./../files/default dest={{project_root}}default owner=vagrant group=vagrant mode=0644
-  - copy: src=./../files/index.html dest={{project_root}}index.html owner=vagrant group=vagrant mode=0644
-  - copy: src=./../files/Dockerfile dest={{project_root}}Dockerfile owner=vagrant group=vagrant mode=0644
+  - copy: src=./../files/default dest={{project_root}}default owner={{web_user}} group={{web_group}} mode=0644
+  - copy: src=./../files/index.html dest={{project_root}}index.html owner={{web_user}} group={{web_group}} mode=0644
+  - copy: src=./../files/Dockerfile dest={{project_root}}Dockerfile owner={{web_user}} group={{web_group}} mode=0644
   - name: Docker - build image
     shell: >
       docker build -t nginx .
