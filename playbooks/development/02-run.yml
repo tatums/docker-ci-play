@@ -7,6 +7,6 @@
   tasks:
   - name: Docker - Run
     shell: >
-      docker run -v {{project_root}}:/var/www:rw -p 80:80 -d nginx
+      sudo docker run -v /var/www:/var/www:rw -p 80:80 -d nginx
     args:
       chdir: ~/app
