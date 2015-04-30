@@ -4,7 +4,9 @@
   vars_files:
     - ./../vars.yml
   gather_facts: false
+  tasks:
   - name: Docker - Run
     shell: >
-      docker-compose build
-
+      docker-compose up -d
+    args:
+      chdir: ~/app
