@@ -1,0 +1,13 @@
+---
+# tasks for postgres
+
+- name: install postgres via yum
+  yum: name=postgres state=present
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: install postgres via apt
+  apt: name=postgres state=present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: ensure postgres is running (and enable it at boot)
+  service: name=postgres state=started enabled=yes
