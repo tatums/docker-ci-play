@@ -2,7 +2,7 @@
 - hosts: web
   sudo: yes
   vars_files:
-    - ./../vars.yml
+    - vars.yml
   ## FIX ME - {{web_user}} no workie
   remote_user: ec2-user
 
@@ -12,9 +12,9 @@
     file: path={{project_root}} state=directory
   - name: Setup Web Folder
     file: path=/var/www state=directory
-  - copy: src=./../files/index.html dest=/var/www/index.html owner={{web_user}} group={{web_group}} mode=0644
-  - copy: src=./../files/default dest={{project_root}}default owner={{web_user}} group={{web_group}} mode=0644
-  - copy: src=./../files/Dockerfile dest={{project_root}}Dockerfile owner={{web_user}} group={{web_group}} mode=0644
+  - copy: src=./files/index.html dest=/var/www/index.html owner={{web_user}} group={{web_group}} mode=0644
+  - copy: src=./files/default dest={{project_root}}default owner={{web_user}} group={{web_group}} mode=0644
+  - copy: src=./files/Dockerfile dest={{project_root}}Dockerfile owner={{web_user}} group={{web_group}} mode=0644
   - name: Docker - build image
     shell: >
       sudo docker build -t nginx .

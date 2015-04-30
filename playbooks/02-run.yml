@@ -3,7 +3,7 @@
   remote_user: ec2-user
   gather_facts: false
   vars_files:
-    - ./../vars.yml
+    - vars.yml
   tasks:
   - name: Docker - Run
     shell: >
