@@ -2,7 +2,7 @@
 # tasks for postgres
 
 - name: install postgres via yum
-  yum: name=postgres state=present
+  yum: name=postgresql-server state=present
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
 - name: install postgres via apt
