@@ -3,7 +3,6 @@
 
 ## sources
 
-
 https://serversforhackers.com/getting-started-with-docker
 
 https://docs.docker.com/compose/rails/
@@ -11,22 +10,22 @@ https://docs.docker.com/compose/rails/
 
 ## init
 ```
-ansible-playbook -i hosts playbooks/development/00-init.yml
+ansible-playbook -i hosts_dev playbooks/00-init.yml
 ```
 
 ## pull code
 ```
-ansible-playbook -i hosts playbooks/development/01-code.yml
+ansible-playbook -i hosts_dev playbooks/01-code.yml
 ```
 
 ## build
 ```
-ansible-playbook -i hosts playbooks/development/02-build.yml
+ansible-playbook -i hosts_dev playbooks/02-build.yml
 ```
 
 ## run
 ```
-ansible-playbook -i hosts playbooks/development/03-run.yml
+ansible-playbook -i hosts_dev playbooks/03-run.yml
 ```
 
 ## NOTES
