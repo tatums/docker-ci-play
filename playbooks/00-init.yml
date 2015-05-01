@@ -3,30 +3,31 @@
   remote_user: ec2-user
 
   tasks:
-    name: install htop via apt
-    sudo: yes
-    apt:
-      name: htop
-      state: latest
-    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-    name: install htop via yum
+  - name: install htop via yum
     sudo: yes
     yum:
       name: htop
       state: latest
     when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
-    name: Installing docker
+  - name: install git via yum
+    sudo: yes
+    yum:
+      name: git
+      state: latest
+    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+  - name: Installing docker
     sudo: yes
     shell: >
       wget -qO- https://get.docker.com/ | sh
     args:
       creates: /usr/bin/docker
 
-    name: Create docker group
+  - name: Create docker group
+    sudo: yes
     group: name=docker state=present
 
-    user: name=ec2-user groups=docker append=yes
+  - user: name=ec2-user groups=docker append=yes
     sudo: yes
 

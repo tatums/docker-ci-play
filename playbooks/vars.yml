@@ -1,7 +1,7 @@
 ---
-project_name: awesome_thing
-project_root: ~/app/
-project_repo: https://github.com/tatums/awesome_thing.git
+project_name: hack-continuous-delivery-app
+project_root: /var/www
+project_repo: https://bitbucket.org/hs2studio/hack-continuous-delivery-app
 branch: master
 web_user: ec2-user
 web_group: ec2-user
