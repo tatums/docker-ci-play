@@ -4,7 +4,7 @@
   remote_user: "{{app_user}}"
   gather_facts: false
   tasks:
-  - copy: src=./files/docker-compose.yml dest={{project_root}}docker-compose.yml owner=vagrant group=vagrant mode=0644
+  - copy: src=./files/docker-compose.yml dest={{project_root}}docker-compose.yml owner={{app_user}} group={{app_user}} mode=0644
   - copy: src=./files/Dockerfile dest={{project_root}}Dockerfile owner={{app_user}} group={{app_user}} mode=0644
   - name: Docker - build image
     shell: >
