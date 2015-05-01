@@ -4,12 +4,16 @@
     - vars.yml
   remote_user: "{{app_user}}"
   gather_facts: false
-  run_once: true
-
-- set_fact: migrate={{ migrate|bool }}
-  when: migrate is defined
-- set_fact: migrate=false
-  when: migrate is not defined
 
   tasks:
-  - { cmd: "bundle exec rake db:migrate", run_once: true, control: migrate }
+  ## PULL REPO
+  - name: Pull sources from the repository.
+    git: repo={{project_repo}} dest={{project_root}} version={{branch}} accept_hostkey=true
+    sudo_user: "{{app_user}}"
+
+  - name: Migrate
+    shell: >
+      docker-compose run web bundle install && docker-compose run web bundle exec rake db:create && docker-compose run web bundle exec rake db:migrate
+    args:
+      chdir: "{{project_root}}"
+
