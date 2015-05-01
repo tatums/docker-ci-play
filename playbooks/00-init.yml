@@ -1,6 +1,6 @@
 ---
-- hosts: dev
-  remote_user: vagrant
+- hosts: app
+  remote_user: {{app_user}}
 
   tasks:
   - name: install htop
@@ -31,6 +31,6 @@
       owner: root
       mode: 0755
 
-  - user: name=vagrant groups=docker append=yes
+  - user: name={{app_user}} groups=docker append=yes
     sudo: yes
 

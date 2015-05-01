@@ -4,3 +4,4 @@ project_root: ~/app/
 project_repo: https://github.com/tatums/awesome_thing.git
 branch: master
 
+app_user: vagrant
