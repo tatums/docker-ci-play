@@ -10,4 +10,4 @@
     shell: >
       docker-compose up -d
     args:
-      chdir: ~/app
+      chdir: "{{project_root}}"

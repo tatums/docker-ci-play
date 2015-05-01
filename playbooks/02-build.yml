@@ -10,5 +10,5 @@
     shell: >
       docker-compose build
     args:
-      chdir: ~/app
+      chdir: "{{project_root}}"
 
