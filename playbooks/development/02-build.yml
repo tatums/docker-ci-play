@@ -11,5 +11,4 @@
       docker-compose build
     args:
       chdir: ~/app
-  #- file: state=directory path={{project_root}} mode=0755 recurse=yes
 

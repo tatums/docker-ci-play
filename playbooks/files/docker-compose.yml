@@ -4,7 +4,6 @@ db:
     - "5432"
 web:
   build: .
-  #command: bundle exec rails s -e "production" -p 3000 -b '0.0.0.0'
   command: bundle exec rails s -p 3000 -b '0.0.0.0'
   environment:
     - SECRET_KEY_BASE=19b3e3f8a1296742775e2100eb7db034775b059400411f5346a07296331d50ba1c864338adb5d597317205f9f3ceeff75529e4abb61dc338c0feab3d977be76d
