@@ -1,32 +1,36 @@
 ## HACK - continuous delivery
 
 
-## sources
-
+### sources
+These script are heavily based on these two posts
 
 https://serversforhackers.com/getting-started-with-docker
-
 https://docs.docker.com/compose/rails/
 
 
-## init
+### init
 ```
-ansible-playbook -i hosts playbooks/development/00-init.yml
-```
-
-## pull code
-```
-ansible-playbook -i hosts playbooks/development/01-code.yml
+ansible-playbook -i hosts_dev playbooks/00-init.yml
 ```
 
-## build
+### pull code
 ```
-ansible-playbook -i hosts playbooks/development/02-build.yml
+ansible-playbook -i host_dev playbooks/01-code.yml
 ```
 
-## run
+### build
 ```
-ansible-playbook -i hosts playbooks/development/03-run.yml
+ansible-playbook -i host_dev playbooks/02-build.yml
+```
+
+### run
+```
+ansible-playbook -i host_dev playbooks/03-run.yml
+```
+
+### Deploy
+```
+ansible-playbook -i host_dev playbooks/04-deploy.yml
 ```
 
 ## NOTES
